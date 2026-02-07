@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kruthik Reddy Purumandla | Semiconductor Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Crimson+Pro:wght@300;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d1b2a;
+            --secondary: #1b263b;
+            --accent: #00d4ff;
+            --accent-dim: rgba(0, 212, 255, 0.15);
+            --text: #e0e1dd;
+            --text-muted: #778da9;
+            --border: #415a77;
+            --highlight: #00ff9f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Technical Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(var(--accent) 1px, transparent 1px),
+                linear-gradient(90deg, var(--accent) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '>';
+            position: absolute;
+            left: -15px;
+            opacity: 0;
+            transition: all 0.3s;
+            color: var(--accent);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+            left: -20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 4rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--accent-dim);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.8s ease 0.2s backwards;
+        }
+
+        .hero-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.8s ease 0.4s backwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            animation: fadeIn 0.8s ease 0.6s backwards;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease 0.8s backwards;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .meta-item::before {
+            content: '▸';
+            color: var(--accent);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeIn 0.8s ease 1s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 20px var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-dim);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        /* Expertise Areas */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .expertise-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--accent);
+            transition: height 0.4s;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .expertise-card:hover::before {
+            height: 100%;
+        }
+
+        .expertise-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .expertise-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-badge {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--accent-dim);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        /* Projects */
+        .projects-container {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .project {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .project::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.4s;
+        }
+
+        .project:hover {
+            border-color: var(--accent);
+        }
+
+        .project:hover::after {
+            width: 100%;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .project-tools {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tool-tag {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-highlights {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .project-highlights li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-muted);
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .project-highlights li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.4rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+        }
+
+        .timeline-period {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-position {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-company {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .timeline-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills Grid */
+        .skills-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 2rem;
+        }
+
+        .skill-category-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-item {
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            border: 1px solid var(--border);
+            color: var(--text);
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 4rem;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            border: 1px solid var(--border);
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 4rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav, .hero, section, footer {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .expertise-grid,
+            .skills-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .contact-container {
+                padding: 2rem;
+            }
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">KRP</div>
+            <ul class="nav-links">
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">Semiconductor Engineer</div>
+            <h1 class="hero-title">Kruthik Reddy Purumandla</h1>
+            <p class="hero-subtitle">Advancing semiconductor technology through Signal/Power Integrity analysis, advanced packaging co-design, and analog IC development</p>
+            
+            <div class="hero-meta">
+                <div class="meta-item">M.S. Electrical Engineering, ASU</div>
+                <div class="meta-item">Expected May 2026</div>
+                <div class="meta-item">Tempe, AZ</div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise">
+        <div class="section-header reveal">
+            <div class="section-tag">Areas of Focus</div>
+            <h2 class="section-title">Expertise</h2>
+            <p class="section-subtitle">Specialized knowledge across signal integrity, advanced packaging, and analog design</p>
+        </div>
+
+        <div class="expertise-grid">
+            <div class="expertise-card reveal">
+                <div class="expertise-icon">⚡</div>
+                <h3 class="expertise-title">Signal & Power Integrity</h3>
+                <p class="expertise-desc">Analyzing interconnect parasitics, PDN behavior, and high-speed signal integrity for chiplet-based systems using advanced electromagnetic simulation tools.</p>
+                <div class="expertise-skills">
+                    <span class="skill-badge">ANSYS HFSS</span>
+                    <span class="skill-badge">SI/PI Analysis</span>
+                    <span class="skill-badge">High-Speed Interconnects</span>
+                </div>
+            </div>
+
+            <div class="expertise-card reveal">
+                <div class="expertise-icon">📦</div>
+                <h3 class="expertise-title">Advanced Semiconductor Packaging</h3>
+                <p class="expertise-desc">Expertise in 2D/2.5D chiplet packaging, thermo-mechanical reliability analysis, warpage simulation, and SI/PI-aware co-design methodologies.</p>
+                <div class="expertise-skills">
+                    <span class="skill-badge">ANSYS Mechanical</span>
+                    <span class="skill-badge">Chiplet Co-Design</span>
+                    <span class="skill-badge">Thermal Analysis</span>
+                </div>
+            </div>
+
+            <div class="expertise-card reveal">
+                <div class="expertise-icon">🔬</div>
+                <h3 class="expertise-title">Analog & Mixed-Signal IC Design</h3>
+                <p class="expertise-desc">Full analog design flow experience including schematic capture, layout, PVT analysis, and mixed-signal simulation for high-performance amplifiers and power management.</p>
+                <div class="expertise-skills">
+                    <span class="skill-badge">Cadence Virtuoso</span>
+                    <span class="skill-badge">CMOS Design</span>
+                    <span class="skill-badge">RF Amplifiers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-header reveal">
+            <div class="section-tag">Featured Work</div>
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">Academic and research projects demonstrating technical depth and practical application</p>
+        </div>
+
+        <div class="projects-container">
+            <div class="project reveal">
+                <div class="project-header">
+                    <h3 class="project-title">2D/2.5D Chiplet Package Modeling & SI/PI Analysis</h3>
+                    <div class="project-tools">
+                        <span class="tool-tag">ANSYS Mechanical</span>
+                        <span class="tool-tag">ANSYS HFSS</span>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Comprehensive package reliability and signal integrity study for advanced chiplet architectures, combining mechanical and electromagnetic simulation.
+                </p>
+                <ul class="project-highlights">
+                    <li>Built 2D and 2.5D chiplet package models including dies, interposer, and micro-bumps</li>
+                    <li>Examined warpage and thermal effects from CTE mismatch to assess interconnect parasitic impact</li>
+                    <li>Evaluated package deformation effects on signal and power integrity using electromagnetic analysis</li>
+                    <li>Identified interposer-underfill strain localization as key mechanical reliability risk</li>
+                </ul>
+            </div>
+
+            <div class="project reveal">
+                <div class="project-header">
+                    <h3 class="project-title">High-Performance Amplifier Design</h3>
+                    <div class="project-tools">
+                        <span class="tool-tag">Cadence Virtuoso</span>
+                        <span class="tool-tag">ADEL</span>
+                        <span class="tool-tag">Spectre</span>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Designed and optimized high-gain CMOS amplifiers with comprehensive PVT analysis and stability verification.
+                </p>
+                <ul class="project-highlights">
+                    <li>Implemented folded-cascode topology achieving 58 dB gain with 90 dB CMRR</li>
+                    <li>Realized telescopic cascode design delivering 65 dB DC gain and 22.1 MHz UGBW at 70° phase margin</li>
+                    <li>Validated PVT robustness using corner analysis, constraining gain drift below 5%</li>
+                    <li>Analyzed gain-bandwidth-stability trade-offs for reliable analog circuit operation</li>
+                </ul>
+            </div>
+
+            <div class="project reveal">
+                <div class="project-header">
+                    <h3 class="project-title">Advanced Low-Dropout Regulator (LDO) Design</h3>
+                    <div class="project-tools">
+                        <span class="tool-tag">Cadence Virtuoso</span>
+                        <span class="tool-tag">ADEL</span>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Capless LDO with nested Miller compensation for power management applications with tight regulation requirements.
+                </p>
+                <ul class="project-highlights">
+                    <li>Sustained 100 mV dropout voltage at 50 mA load with stable operation</li>
+                    <li>Stabilized 1.15 V bandgap reference with ±0.8% PVT variation</li>
+                    <li>Maintained 45 dB PSRR and <2 µV/mA load regulation</li>
+                    <li>Implemented bias-aware trimming strategies for temperature compensation</li>
+                </ul>
+            </div>
+
+            <div class="project reveal">
+                <div class="project-header">
+                    <h3 class="project-title">RF Power Amplifier Design (Multi-Class)</h3>
+                    <div class="project-tools">
+                        <span class="tool-tag">Keysight ADS</span>
+                        <span class="tool-tag">MATLAB</span>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Comprehensive RF amplifier design study across Class A, F, J, and Doherty topologies with efficiency-linearity optimization.
+                </p>
+                <ul class="project-highlights">
+                    <li>Implemented load-pull and harmonic balance analysis to optimize linearity-efficiency trade-offs</li>
+                    <li>Performed impedance matching and bias optimization to control gain compression</li>
+                    <li>Analyzed frequency-domain and harmonic responses for RF performance validation</li>
+                    <li>Characterized nonlinear behavior and harmonic content across operating conditions</li>
+                </ul>
+            </div>
+
+            <div class="project reveal">
+                <div class="project-header">
+                    <h3 class="project-title">Cleanroom Airflow & Particle-Transport Simulation</h3>
+                    <div class="project-tools">
+                        <span class="tool-tag">Python</span>
+                        <span class="tool-tag">NumPy</span>
+                        <span class="tool-tag">Matplotlib</span>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Developed computational framework for cleanroom contamination control and classification analysis.
+                </p>
+                <ul class="project-highlights">
+                    <li>Built matrix airflow model for 10×10×1 ft³ cleanroom slice with HEPA/ULPA filtration</li>
+                    <li>Implemented particle-transport dynamics and recirculation logic based on industry standards</li>
+                    <li>Validated across four scenarios, accurately matching 2.1848 particles/min benchmark</li>
+                    <li>Determined ISO/FS 209E cleanliness classifications from simulation results</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-header reveal">
+            <div class="section-tag">Professional Background</div>
+            <h2 class="section-title">Experience</h2>
+            <p class="section-subtitle">Teaching, research, and industry positions building practical engineering skills</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-period">Jan 2025 – Present</div>
+                <div class="timeline-position">Graduate Service Assistant</div>
+                <div class="timeline-company">Arizona State University | Tempe, AZ</div>
+                <div class="timeline-description">
+                    Supporting semiconductor fabrication cleanroom instruction and system dynamics courses with hands-on laboratory assistance and student mentoring.
+                    <ul>
+                        <li>Assisted with cleanroom constraints, layout considerations, and process-awareness training</li>
+                        <li>Guided 180+ students through MATLAB-Arduino laboratory sessions for Systems Dynamics and Controls</li>
+                        <li>Helped students interpret experimental data and validate system behavior</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-period">Nov 2023 – Apr 2024</div>
+                <div class="timeline-position">Electronics Engineer Intern</div>
+                <div class="timeline-company">Wisda Energy | Hyderabad, India</div>
+                <div class="timeline-description">
+                    Developed analog front-end circuits for energy sensing and control modules with emphasis on noise reduction and signal conditioning.
+                    <ul>
+                        <li>Designed low-noise analog front end, reducing noise susceptibility by 22%</li>
+                        <li>Simulated analog signal paths using LTSpice to verify stable gain behavior</li>
+                        <li>Integrated sensor-conditioning and ADC signal scaling, improving reliability by 18%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-period">Jun 2023 – Sep 2023</div>
+                <div class="timeline-position">Electronics Design Engineer Intern</div>
+                <div class="timeline-company">iTIC Incubator, IIT Hyderabad | Hyderabad, India</div>
+                <div class="timeline-description">
+                    Developed IoT sensor modules with integrated analog signal conditioning and data acquisition systems.
+                    <ul>
+                        <li>Conditioned piezoelectric sensor signals through analog amplification and filtering</li>
+                        <li>Modeled analog signal chain using LTSpice to validate gain and noise behavior</li>
+                        <li>Debugged noise issues and transferred digitized data to Arduino-based IoT module</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-header reveal">
+            <div class="section-tag">Technical Capabilities</div>
+            <h2 class="section-title">Skills</h2>
+            <p class="section-subtitle">Comprehensive toolset for semiconductor design, simulation, and analysis</p>
+        </div>
+
+        <div class="skills-categories">
+            <div class="skill-category reveal">
+                <h3 class="skill-category-title">Signal & Power Integrity</h3>
+                <div class="skill-list">
+                    <span class="skill-item">SI/PI Analysis</span>
+                    <span class="skill-item">Interconnect Parasitics</span>
+                    <span class="skill-item">PDN Behavior</span>
+                    <span class="skill-item">High-Speed Signals</span>
+                    <span class="skill-item">S-Parameter Analysis</span>
+                </div>
+            </div>
+
+            <div class="skill-category reveal">
+                <h3 class="skill-category-title">Semiconductor Packaging</h3>
+                <div class="skill-list">
+                    <span class="skill-item">2D/2.5D Packaging</span>
+                    <span class="skill-item">Chiplet Co-Design</span>
+                    <span class="skill-item">Warpage Analysis</span>
+                    <span class="skill-item">Thermal Characterization</span>
+                    <span class="skill-item">CTE Mismatch</span>
+                    <span class="skill-item">Reliability Analysis</span>
+                </div>
+            </div>
+
+            <div class="skill-category reveal">
+                <h3 class="skill-category-title">EDA & Simulation Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-item">ANSYS HFSS</span>
+                    <span class="skill-item">ANSYS Mechanical</span>
+                    <span class="skill-item">Cadence Virtuoso</span>
+                    <span class="skill-item">Spectre</span>
+                    <span class="skill-item">HSPICE</span>
+                    <span class="skill-item">Keysight ADS</span>
+                    <span class="skill-item">LTSpice</span>
+                </div>
+            </div>
+
+            <div class="skill-category reveal">
+                <h3 class="skill-category-title">Analog & RF Design</h3>
+                <div class="skill-list">
+                    <span class="skill-item">CMOS Amplifiers</span>
+                    <span class="skill-item">Folded Cascode</span>
+                    <span class="skill-item">Bandgap References</span>
+                    <span class="skill-item">LDO Regulators</span>
+                    <span class="skill-item">RF Power Amplifiers</span>
+                    <span class="skill-item">PVT Analysis</span>
+                    <span class="skill-item">Stability Analysis</span>
+                </div>
+            </div>
+
+            <div class="skill-category reveal">
+                <h3 class="skill-category-title">Programming & Analysis</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">MATLAB</span>
+                    <span class="skill-item">C/C++</span>
+                    <span class="skill-item">NumPy</span>
+                    <span class="skill-item">Matplotlib</span>
+                    <span class="skill-item">Data Analysis</span>
+                </div>
+            </div>
+
+            <div class="skill-category reveal">
+                <h3 class="skill-category-title">Measurement & Validation</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Oscilloscope</span>
+                    <span class="skill-item">Spectrum Analyzer</span>
+                    <span class="skill-item">PCB Validation</span>
+                    <span class="skill-item">Signal Testing</span>
+                    <span class="skill-item">Device Characterization</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-container reveal">
+            <h2 class="contact-title">Let's Connect</h2>
+            <p class="contact-subtitle">Open to opportunities in Signal/Power Integrity, Advanced Packaging, and Analog IC Design</p>
+            
+            <div class="contact-methods">
+                <a href="mailto:kruthikpurumandla79@gmail.com" class="contact-link">
+                    <span>📧</span>
+                    <span>kruthikpurumandla79@gmail.com</span>
+                </a>
+                <a href="tel:+16028078788" class="contact-link">
+                    <span>📱</span>
+                    <span>(602) 807-8788</span>
+                </a>
+                <a href="https://linkedin.com/in/kruthik-reddy-purumandla" class="contact-link" target="_blank">
+                    <span>💼</span>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Kruthik Reddy Purumandla. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animations
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            const revealPoint = 80;
+
+            reveals.forEach(reveal => {
+                const revealTop = reveal.getBoundingClientRect().top;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        checkReveal();
+
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--accent)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
